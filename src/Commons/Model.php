@@ -90,7 +90,6 @@ class Model
 
                 ++$index;
             }
-
             $query->executeQuery();
 
             return true;
@@ -114,8 +113,9 @@ class Model
             $query->where('id = ?')
                 ->setParameter(count($data), $id)
                 ->executeQuery();
-
+            // echo $query->getSQL();die;
             return true;
+            
         }
 
         return false;

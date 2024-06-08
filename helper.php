@@ -16,9 +16,14 @@ if (!function_exists('url')) {
 
 if (!function_exists('auth')) {
     function auth() {
-        if (isset($_SESSION['user'])) {
-            header('Location: ' . url('admin/') );
+        if (isset($_SESSION['user']) ) {
+            if ($_SESSION['user']['role'] == 1) {
+                header('Location: ' . url('admin/') );
+                exit;
+            }
+            header('Location: ' . url('') );
             exit;
         }
+        
     }
 }

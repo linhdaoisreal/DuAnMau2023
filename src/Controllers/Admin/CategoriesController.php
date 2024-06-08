@@ -4,13 +4,16 @@ namespace Administator\XuongOop\Controllers\Admin;
 
 use Administator\XuongOop\Commons\Controller;
 use Administator\XuongOop\Models\Categories;
+use Administator\XuongOop\Models\Post_Category;
 use Rakit\Validation\Validator;
 
 class CategoriesController extends Controller{
     private Categories $category;
+    private Post_Category $post_cate;
 
     public function __construct(){
         $this -> category = new Categories();
+        $this -> post_cate = new Post_Category();
     }
 
     public function index(){
@@ -97,7 +100,8 @@ class CategoriesController extends Controller{
 
     public function delete($id){
 
-        $this->category->delete($id);
+        $this->post_cate->deleteByCategoryID($id);
+        $this->category->delete($id); 
 
         header('Location: ' . url('admin/categories'));
         exit();

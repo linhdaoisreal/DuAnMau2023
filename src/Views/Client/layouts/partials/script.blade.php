@@ -10,3 +10,14 @@
 
 <!-- Main Script -->
 <script src="{{ asset('assets/client/js/script.js')}}"></script>
+
+<!-- CK Editor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#content'))
+        .catch(error => {
+            console.error(error);
+        });
+
+</script>

@@ -74,6 +74,13 @@ Categories
                     </table>
                 </div>
             </div>
+            <div class="justify-content-center">
+            @php
+                for($i = 1; $i <= $totalPage; $i++){
+                    echo '<a href="'.url('admin/categories/?page='.$i.'').'" class="btn btn-light mx-2">'.$i.'</a>';
+                }
+            @endphp
+            </div>
         </div>
     </div>
 

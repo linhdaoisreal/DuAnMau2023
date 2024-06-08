@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section('title')
-<h1>Cập nhật user {{$user['id']}}</h1>
+Cập nhật user {{$user['id']}}
 @endsection
 
 @section('content')
@@ -47,24 +47,67 @@
 
                 <form action="{{ url("admin/users/{$user['id']}/update") }}" enctype="multipart/form-data"
                     method="POST">
+
                     <div class="mb-3 mt-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" value="{{$user['name']}}" name="name">
                     </div>
+
                     <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email" value="{{$user['email']}}" name="email">
                     </div>
+
                     <div class="mb-3 mt-3">
                         <label for="avatar" class="form-label">Avatar:</label>
                         <input type="file" class="form-control" id="avatar" placeholder="Enter avatar" name="avatar">
                         <img src="{{asset($user['avatar'])}}" alt="" width="100px">
                     </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Status:</label>
+                        <select class="form-control" name="status" id="">
+                            @php
+                                if($category['status'] == 1){
+                                    echo "
+                                        <option value='1'>Disable</option>
+                                        <option value='0'>Active</option>
+                                    ";
+                                }else{
+                                    echo "
+                                        <option value='0'>Active</option>
+                                        <option value='1'>Disable</option>
+                                    ";
+                                }
+                            @endphp
+                        </select>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Role:</label>
+                        <select class="form-control" name="role" id="">
+                            @php
+                                if($category['role'] == 1){
+                                    echo "
+                                        <option value='1'>ADMIN</option>
+                                        <option value='0'>User</option>
+                                    ";
+                                }else{
+                                    echo "
+                                        <option value='0'>User</option>
+                                        <option value='1'>ADMIN</option>
+                                    ";
+                                }
+                            @endphp
+                        </select>
+                    </div>
+
                     <div class="mb-3 mt-3">
                         <label for="password" class="form-label">Password:</label>
                         <input type="text" class="form-control" id="password" placeholder="Enter password"
                             name="password">
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

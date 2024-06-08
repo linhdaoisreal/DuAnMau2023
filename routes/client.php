@@ -4,6 +4,7 @@ use Administator\XuongOop\Controllers\Client\ContactController;
 use Administator\XuongOop\Controllers\Client\HomeController;
 use Administator\XuongOop\Controllers\Client\LoginController;
 use Administator\XuongOop\Controllers\Client\ProductController;
+use Administator\XuongOop\Controllers\Client\WritingController;
 
 //Website có các trang
 //  Trang chủ
@@ -19,6 +20,9 @@ use Administator\XuongOop\Controllers\Client\ProductController;
 
 $router->get('/',                 HomeController::class . '@index');
 $router->get('/about',            AboutController::class . '@index');
+
+$router->get('/writing',          WritingController::class . '@index');
+$router->post('/writing/store',   WritingController::class . '@store');
 
 $router->get('/contact',          ContactController::class . '@index');
 $router->post('/contact/store',   ContactController::class . '@store');

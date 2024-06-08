@@ -19,7 +19,7 @@ class LoginController extends Controller{
 
     public function showFormLogin() {
         auth();
-
+        // Helper::debug($_SESSION['user']);
         $this->rendViewClient('login');
     }
 
@@ -37,9 +37,14 @@ class LoginController extends Controller{
             if ($flag) {
 
                 $_SESSION['user'] = $user;
-
-                header('Location: ' . url('admin/') );
-                exit;
+                if($_SESSION['user']['role'] == 1){
+                    header('Location: ' . url('admin/') );
+                    exit;
+                }else{
+                    header('Location: ' . url('/') );
+                    exit;
+                }
+                
             }
 
             throw new \Exception('Password không đúng');

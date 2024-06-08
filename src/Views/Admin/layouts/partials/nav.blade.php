@@ -24,11 +24,11 @@
             
 
             <li class>
-                <a href="{{ asset('assets/admin/Board.html')}}" aria-expanded="false">
+                <a href="{{ url('admin/posts')}}" aria-expanded="false">
                     <div class="icon_menu">
                         <img src="{{ asset('assets/admin/img/menu-icon/5.svg')}}" alt>
                     </div>
-                    <span>Board</span>
+                    <span>Posts</span>
                 </a>
             </li>
 

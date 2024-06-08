@@ -1,6 +1,7 @@
 <?php
 use Administator\XuongOop\Controllers\Admin\CategoriesController;
 use Administator\XuongOop\Controllers\Admin\DashboardController;
+use Administator\XuongOop\Controllers\Admin\PostsController;
 use Administator\XuongOop\Controllers\Admin\UserController;
 
 // CRUD bao gồm: Danh sách, thêm, sửa, xem, xóa
@@ -16,6 +17,10 @@ use Administator\XuongOop\Controllers\Admin\UserController;
 $router->before('GET|POST', '/admin/*.*', function() {
     if (! isset($_SESSION['user'])) {
         header('location: ' . url('login') );
+        exit();
+    }
+    if ($_SESSION['user']['role'] == 0) {
+        header('location: ' . url('') );
         exit();
     }
 });
@@ -42,6 +47,16 @@ $router->mount('/admin', function () use ($router) {
         $router->get('/{id}/edit',      CategoriesController::class . '@edit');
         $router->post('/{id}/update',   CategoriesController::class . '@update');
         $router->get('/{id}/delete',    CategoriesController::class . '@delete');
+    });
+
+    $router->mount('/posts', function () use ($router) {
+        $router->get('/',                       PostsController::class . '@index');
+        $router->get('/{id}/show',              PostsController::class . '@show');
+        $router->post('/{id}/change_status',    PostsController::class . '@change_status');
+        $router->post('/store',                 PostsController::class . '@store');
+        $router->get('/{id}/edit',              PostsController::class . '@edit');
+        $router->post('/{id}/update',           PostsController::class . '@update');
+        $router->get('/{id}/delete',            PostsController::class . '@delete');
     });
     
 });

@@ -116,6 +116,8 @@ class UserController extends Controller{
             $data = [
                 'name'     => $_POST['name'],
                 'email'    => $_POST['email'],
+                'status'    => $_POST['status'],
+                'role'    => $_POST['role'],
                 'password' => !empty($_POST['password'])
                     ? password_hash($_POST['password'], PASSWORD_DEFAULT) : $user['password'],
             ];

@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section('title')
-Danh sách User
+List Post
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@ Danh sách User
             <div class="white_card_header">
                 <div class="box_header m-0">
                     <div class="main-title">
-                        <h2 class="m-0">Danh sach User</h2>
+                        <h2 class="m-0">List Post</h2>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,6 @@ Danh sách User
                     @endphp
                 @endif
 
-                <a href="{{ url('admin/users/create') }}" class="">Add new</a>
-
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -36,57 +34,51 @@ Danh sách User
                                 <th>ID</th>
                                 <th>IMAGE</th>
                                 <th>NAME</th>
-                                <th>EMAIL</th>
                                 <th>CREATED AT</th>
                                 <th>UPDATED AT</th>
-                                <th>ROLE</th>
                                 <th>STATUS</th>
                                 <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($users as $user)
+                            @foreach ($posts as $post)
                                 <tr>
                                     <td>
-                                        <?= $user['id']?>
+                                        <?= $post['id']?>
                                     </td>
-                                    <td><img src="{{asset($user['avatar'])}}" alt="" width="100px"></td>
+                                    <td><img src="{{asset($post['image'])}}" alt="" width="100px"></td>
                                     <td>
-                                        <?= $user['name']?>
-                                    </td>
-                                    <td>
-                                        <?= $user['email']?>
+                                        <?= $post['tittle']?>
                                     </td>
                                     <td>
-                                        <?= $user['created_at']?>
+                                        <?= $post['created_at']?>
                                     </td>
                                     <td>
-                                        <?= $user['updated_at']?>
+                                        <?= $post['updated_at']?>
                                     </td>
                                     <td>
-                                        @if ($user['role'] == 1)
-                                            Admin
-                                        @elseif($user['role'] == 0)
-                                            User
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($user['status'] == 1)
+                                        @if ($post['status'] == 1)
                                             Disable
-                                        @elseif($user['status'] == 0)
+                                        @elseif($post['status'] == 0)
                                             Active
                                         @endif
                                     </td>
                                     <td>
 
-                                        <a href="{{ url('admin/users/' . $user['id'] . '/delete') }}"
+                                        <a class="btn btn-danger" href="{{ url('admin/posts/' . $post['id'] . '/delete') }}"
                                             onclick="return confirm('Bạn có muốn xoá?')">Delete</a>
 
-                                        <a href="{{ url('admin/users/' . $user['id'] . '/edit') }}">Update</a>
+                                        <form action="{{ url('admin/posts/' . $post['id'] . '/change_status') }}" method="post">
+                                            @if ($post['status'] == 1)
+                                                <input type="hidden" value="0" name="status">
+                                            @elseif($post['status'] == 0)
+                                                <input type="hidden" value="1" name="status">
+                                            @endif
+                                            <button class="btn btn-warning" type="submit">Change Status</button>
+                                        </form>
 
-                                        <a href="{{ url('admin/users/' . $user['id'] . '/show') }}">Show</a>
-
+                                        <a class="btn btn-info" href="{{ url('admin/posts/' . $post['id'] . '/show') }}">Show</a>
 
                                     </td>
                                 </tr>
@@ -100,7 +92,7 @@ Danh sách User
             <div class="justify-content-center">
             @php
                 for($i = 1; $i <= $totalPage; $i++){
-                    echo '<a href="'.url('admin/users/?page='.$i.'').'" class="btn btn-light mx-2">'.$i.'</a>';
+                    echo '<a href="'.url('admin/posts/?page='.$i.'').'" class="btn btn-light mx-2">'.$i.'</a>';
                 }
             @endphp
             </div>
