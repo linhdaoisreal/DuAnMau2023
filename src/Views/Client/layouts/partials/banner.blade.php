@@ -8,7 +8,7 @@
                     @php
                         foreach($categories as $category){
                             echo'
-                                <li class="list-inline-item"><a href='.asset('assets/client/tags.html').'>'.$category['name'].'</a></li>
+                                <li class="list-inline-item"><a href='.url('post-by-category/'.$category['id'].'').'>'.$category['name'].'</a></li>
                             ';
                         }
                     @endphp

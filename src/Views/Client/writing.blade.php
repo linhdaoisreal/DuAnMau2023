@@ -75,6 +75,15 @@ Writting Page
                     <textarea name="content" id="content" cols="50" rows="25" class=""></textarea>
                 </div>
 
+                <!-- User ID -->
+                <div class="mb-3 mt-3">
+                    @if (isset($_SESSION['user']))
+                        <input type="hidden" name="user_id" value="{{$_SESSION['user']['id']}}">
+                        @else
+                        <input type="hidden" name="user_id" value="0">
+                    @endif                  
+                </div>
+
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

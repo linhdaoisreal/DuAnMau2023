@@ -14,36 +14,19 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 homepage <i class="ti-angle-down ml-1"></i>
                             </a>
+
+                            <!-- Dropdown menu -->
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{asset('assets/client/index-full.html')}}">Homepage Full
-                                    Width</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/index-full-left.html')}}">Homepage
-                                    Full With Left Sidebar</a>
-
-                                <a class="dropdown-item"
-                                    href="{{asset('assets/client/index-full-right.html')}}">Homepage Full With Right
-                                    Sidebar</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/index-list.html')}}">Homepage List
-                                    Style</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/index-list-left.html')}}">Homepage
-                                    List With Left Sidebar</a>
-
-                                <a class="dropdown-item"
-                                    href="{{asset('assets/client/index-list-right.html')}}">Homepage List With Right
-                                    Sidebar</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/index-grid.html')}}">Homepage Grid
-                                    Style</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/index-grid-left.html')}}">Homepage
-                                    Grid With Left Sidebar</a>
-
-                                <a class="dropdown-item"
-                                    href="{{asset('assets/client/index-grid-right.html')}}">Homepage Grid With Right
-                                    Sidebar</a>
+                                
+                                @php
+                                    foreach($categories as $category){
+                                        echo'
+                                        <a class="dropdown-item" href='.url('post-by-category/'.$category['id'].'').'>
+                                            '.$category['name'].'
+                                        </a>
+                                        ';
+                                    }
+                                @endphp
 
                             </div>
                         </li>
@@ -68,45 +51,12 @@
                             <a class="nav-link" href="{{asset('assets/client/contact.html')}}">Contact</a>
                         </li>
 
-                        <!-- Pages -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{asset('assets/client/#')}}" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Pages <i class="ti-angle-down ml-1"></i>
-                            </a>
-                            <div class="dropdown-menu">
-
-                                <a class="dropdown-item" href="{{asset('assets/client/author.html')}}">Author</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/author-single.html')}}">Author
-                                    Single</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/advertise.html')}}">Advertise</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/post-details.html')}}">Post
-                                    Details</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/post-elements.html')}}">Post
-                                    Elements</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/tags.html')}}">Tags</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/search-result.html')}}">Search
-                                    Result</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/search-not-found.html')}}">Search
-                                    Not Found</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/privacy-policy.html')}}">Privacy
-                                    Policy</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/terms-conditions.html')}}">Terms
-                                    Conditions</a>
-
-                                <a class="dropdown-item" href="{{asset('assets/client/404.html')}}">404 Page</a>
-
-                            </div>
+                        <!-- User -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('assets/client/contact.html')}}">Account</a>
                         </li>
-
+                        
+                        <!-- Writing -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('writing')}}">Writing</a>
                         </li>
@@ -114,6 +64,7 @@
                 </div>
 
                 <div class="order-2 order-lg-3 d-flex align-items-center">
+
                 <nav>
                     @if (!isset($_SESSION['user']))
                         <a class="m-2 p-2 btn btn-primary" href="{{ url('login') }}">Login</a>
@@ -125,8 +76,8 @@
                 </nav>
 
                     <!-- search -->
-                    <form class="search-bar">
-                        <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+                    <form action="{{url('post/search')}}" class="search-bar" method="post">
+                        <input id="search-query" name="search" type="search" placeholder="Type &amp; Hit Enter...">
                     </form>
 
                     <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"

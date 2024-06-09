@@ -39,3 +39,4 @@
 <script src="{{ asset('assets/admin/vendors/chart_am/chart-custom.js')}}"></script>
 <script src="{{ asset('assets/admin/js/dashboard_init.js')}}"></script>
 <script src="{{ asset('assets/admin/js/custom.js')}}"></script>
+

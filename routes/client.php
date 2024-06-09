@@ -1,9 +1,10 @@
 <?php
+use Administator\XuongOop\Controllers\Client\CategoriesController;
 use Administator\XuongOop\Controllers\Client\AboutController;
 use Administator\XuongOop\Controllers\Client\ContactController;
 use Administator\XuongOop\Controllers\Client\HomeController;
 use Administator\XuongOop\Controllers\Client\LoginController;
-use Administator\XuongOop\Controllers\Client\ProductController;
+use Administator\XuongOop\Controllers\Client\PostController;
 use Administator\XuongOop\Controllers\Client\WritingController;
 
 //Website có các trang
@@ -27,8 +28,11 @@ $router->post('/writing/store',   WritingController::class . '@store');
 $router->get('/contact',          ContactController::class . '@index');
 $router->post('/contact/store',   ContactController::class . '@store');
 
-$router->get('/products',         ProductController::class . '@index');
-$router->get('/products/{id}',    ProductController::class . '@detail');
+$router->get('post-by-category/{id}',       CategoriesController::class . '@postByCategory');
+
+$router->get('/post/{id}',         PostController::class . '@detail');
+$router->get('/post/user-post',    PostController::class . '@detail');
+$router->post('/post/search',      PostController::class . '@searchPost');
 
 $router->get('/login',            LoginController::class . '@showFormLogin');
 $router->post('/handle-login',    LoginController::class . '@login');

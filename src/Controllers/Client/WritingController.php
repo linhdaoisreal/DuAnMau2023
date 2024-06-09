@@ -30,15 +30,6 @@ class WritingController extends Controller
 
     public function store()
     {   
-        // $data = [
-        //     'tittle'    => $_POST['tittle'],
-        //     'content'    => $_POST['content'],
-        //     'image'    => $_FILES['image'],
-        //     'category_id'    => $_POST['category_id'],
-        // ];
-        // Helper::debug($_POST['category_id']);
-
-        // die;
 
         $validator = new Validator;
         $validation = $validator->make($_POST + $_FILES, [
@@ -57,7 +48,8 @@ class WritingController extends Controller
         } else {
             $data = [
                 'tittle'    => $_POST['tittle'],
-                'content'    => $_POST['content'],
+                'content'   => $_POST['content'],
+                'user_id'   => $_POST['user_id'],
             ];
 
             if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
