@@ -32,6 +32,7 @@ Login
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{url('/users/create')}}" class="btn btn-primary">Create New Account</a>
             </form>
         </div>
     </div>

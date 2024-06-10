@@ -41,7 +41,7 @@ class Post_Category extends Model
             ->from($this->tableName)
             ->where('post_id = ?')
             ->setParameter(0, $post_id)
-            ->fetchAssociative();
+            ->fetchAllAssociative();
     }
     
 }

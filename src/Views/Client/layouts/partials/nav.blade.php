@@ -53,7 +53,7 @@
 
                         <!-- User -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('assets/client/contact.html')}}">Account</a>
+                            <a class="nav-link" href="{{url('users/post')}}">Account</a>
                         </li>
                         
                         <!-- Writing -->

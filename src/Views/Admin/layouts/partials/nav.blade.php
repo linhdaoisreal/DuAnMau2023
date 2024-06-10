@@ -1,6 +1,6 @@
 <nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
         <div class="logo d-flex justify-content-between">
-            <a href="{{ asset('assets/admin/index-2.html')}}"><img src="{{ asset('assets/admin/img/logo.png')}}" alt></a>
+            <a href="{{ url('admin/')}}"><img src="{{ asset('assets/admin/img/logo.png')}}" alt></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>

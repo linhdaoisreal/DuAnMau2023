@@ -61,14 +61,14 @@ class Categories extends Model
 
     public function analysisPostOfCate(){
         $data = $this -> queryBuilder
-        ->select('c.id','c.name', 'COUNT(pc.post_id) as analys_post')
+        ->select('c.id','c.name', 'COUNT(p_c.post_id) as analys_post')
         ->from($this->tableName, 'c')
-        ->leftJoin('c','post_category', 'pc', 'pc.category_id = c.id')
+        ->leftJoin('c','post_category', 'p_c', 'p_c.category_id = c.id')
         ->groupBy('c.id', 'c.name')
         ->orderBy('analys_post', 'desc')
         ->fetchAllAssociative();
 
-        // echo $data->getSQL();die;
+        // echo $data->getSQL();die;   
 
         return $data;
     }

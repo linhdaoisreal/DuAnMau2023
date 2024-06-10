@@ -24,7 +24,8 @@ class HomeController extends Controller
     {   
         $categories = $this -> category -> allCategories();
         [$recentPost, $totalPage] = $this -> post -> paginateRecentPost($_GET['page'] ?? 1);
-        $post_categories = $this -> category -> getPostCategories(); 
+        $post_categories = $this -> category -> getPostCategories();
+        $analysCate = (new Categories) -> analysisPostOfCate();
 
         // Helper::debug([$recentPost, $totalPage]);
         // Helper::debug($post_categories);
@@ -34,6 +35,7 @@ class HomeController extends Controller
             'totalPage'       => $totalPage,
             'recentPost'      => $recentPost,
             'post_categories' => $post_categories,
+            'analysCate'      => $analysCate,
         ]);
     }
 

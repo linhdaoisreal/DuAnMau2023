@@ -34,16 +34,18 @@ class PostController extends Controller{
     }
 
     public function searchPost(){
-        $s = '%' . $_POST['search'] . '%';
+        $s =  $_POST['search'] ;
 
         $categories = $this -> categories -> allCategories();
-        [$search_results, $totalPage] = $this->posts->paginateSearchPost($s, $_GET['page'] ?? 1);
+        [$recentPost, $totalPage] = $this->posts->paginateSearchPost($s, $_GET['page'] ?? 1);
         $post_categories = $this -> categories -> getPostCategories(); 
+
+        // Helper::debug($recentPost);
 
         $this->rendViewClient('post-by-search', [
             'categories'      => $categories,
             'totalPage'       => $totalPage,
-            'search_results'  => $search_results,
+            'recentPost'      => $recentPost,
             'post_categories' => $post_categories,
         ]);
     }

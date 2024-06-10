@@ -3,8 +3,8 @@
     <!-- Search -->
     <div class="widget">
         <h4 class="widget-title"><span>Search</span></h4>
-        <form action="#!" class="widget-search">
-            <input class="mb-3" id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+        <form action="{{url('post/search')}}" class="widget-search" method="post">
+            <input class="mb-3" id="search-query" name="search" type="search" placeholder="Type &amp; Hit Enter...">
             <i class="ti-search"></i>
             <button type="submit" class="btn btn-primary btn-block">Search</button>
         </form>
@@ -86,11 +86,11 @@
         <h4 class="widget-title"><span>Categories</span></h4>
         <ul class="list-unstyled widget-list">
 
-            @foreach ($categories as $category)
+            @foreach ($analysCate as $anaCate)
             <li>
-                <a href="{{url('post-by-category/'.$category['id'].'')}}" class="d-flex">
-                    {{$category['name']}}
-                    <small class="ml-auto">(4)</small>
+                <a href="{{url('post-by-category/'.$anaCate['id'].'')}}" class="d-flex">
+                    {{$anaCate['name']}}
+                    <small class="ml-auto">{{$anaCate['analys_post']}}</small>
                 </a>
             </li>
             @endforeach

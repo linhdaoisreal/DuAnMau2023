@@ -90,11 +90,10 @@ class Posts extends Model
         ->setFirstResult($offset)
         ->setMaxResults($perPage)
         ->innerJoin('p','users', 'u', 'p.user_id = u.id')
-        ->where('p.tittle LIKE search')
-        ->setParameter(0, $search)
-        ->orderBy('p.id', 'desc');
-        // ->fetchAllAssociative()
-        echo $data->getSQL();die;
+        ->where("p.tittle LIKE '%$search%'")
+        ->orderBy('p.id', 'desc')
+        ->fetchAllAssociative();
+        // echo $data->getSQL();die;
 
         return [$data, $totalPage];
     }
