@@ -12,7 +12,7 @@
             <div class="white_card_header">
                 <div class="box_header m-0">
                     <div class="main-title">
-                        <h2 class="m-0">Cập nhật user {{$user['id']}}</h2>
+                        <h2 class="m-0">Cập nhật Category {{$category['id']}}</h2>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         <input type="text" class="form-control" id="name" value="{{$category['name']}}" name="name">
                     </div>
                     <div class="mb-3 mt-3">
-                        <label for="email" class="form-label">Email:</label>
+                        <label for="email" class="form-label">Status:</label>
                         <select class="form-control" name="status" id="">
                             @php
                                 if($category['status'] == 1){

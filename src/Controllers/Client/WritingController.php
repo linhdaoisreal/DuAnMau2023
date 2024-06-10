@@ -130,6 +130,7 @@ class WritingController extends Controller
                 'tittle'    => $_POST['tittle'],
                 'content'   => $_POST['content'],
                 'user_id'   => $_POST['user_id'],
+                'status'    => $_POST['status'],
             ];
 
             $flagUpload = false;

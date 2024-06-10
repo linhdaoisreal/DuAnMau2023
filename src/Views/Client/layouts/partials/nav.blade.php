@@ -10,7 +10,7 @@
                     <ul class="navbar-nav mx-auto">
                         <!-- Homepage -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{asset('assets/client/#')}}" role="button" data-toggle="dropdown"
+                            <a class="nav-link" href="{{url('')}}" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 homepage <i class="ti-angle-down ml-1"></i>
                             </a>

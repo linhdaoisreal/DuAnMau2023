@@ -53,6 +53,25 @@ Update Your Post Page
                     <img src="{{asset("{$post['image']}")}}" alt="">
                 </div>
 
+                <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Status:</label>
+                        <select class="form-control" name="status" id="">
+                            @php
+                                if($post['status'] == 1){
+                                    echo "
+                                        <option value='1'>Disable</option>
+                                        <option value='0'>Active</option>
+                                    ";
+                                }else{
+                                    echo "
+                                        <option value='0'>Active</option>
+                                        <option value='1'>Disable</option>
+                                    ";
+                                }
+                            @endphp
+                        </select>
+                    </div>
+
                 <!-- Genre -->
                 <ul class="mb-3 mt-3">
                     <label for="categories" class="form-label">Categories:</label>
